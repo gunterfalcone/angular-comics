@@ -10,11 +10,18 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-zip');
+  grunt.loadNpmTasks('grunt-karma');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
-          pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('package.json'),
 
+    karma: {  
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
+    
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
