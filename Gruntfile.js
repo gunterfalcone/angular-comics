@@ -11,6 +11,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-zip');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-protractor-runner');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -22,6 +23,12 @@ module.exports = function (grunt) {
       }
     },
     
+    protractor: {
+	    options: {
+	      configFile: "protractor.conf.js"
+	    },
+	    e2e: {}
+	},
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -173,4 +180,6 @@ module.exports = function (grunt) {
   grunt.registerTask('default',['build']);  
 
   grunt.registerTask('distribution', ['zip']);
+
+  grunt.registerTask('test', ['karma', 'build', 'connect:dist', 'protractor:e2e']);
 };
