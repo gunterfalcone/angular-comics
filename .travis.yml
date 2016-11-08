@@ -1,4 +1,9 @@
 language: node_js
 node_js: '7.0'
 
+install:
+  - npm install -g bower grunt-cli jshint karma
+  - npm install
+  - bower install
+
 script: grunt karma
