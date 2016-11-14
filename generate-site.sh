@@ -1,9 +1,12 @@
 #/bin/bash
-CURRENT_BRANCH=`git branch | grep \* | cut -d ' ' -f2`
-git checkout gh-pages
-mv dist/* .
-git add .
-git commit -am "Deploy application"
-git push origin HEAD --force
-git checkout $CURRENT_BRANCH
+git config user.email "github@travis-ci.com"
+git config user.name "Travis CI"
 
+git remote add upstream "https://${GITHUB_API_TOKEN}@github.com/formations/angular-comics.git"
+git fetch upstream
+git reset upstream/gh-pages
+
+mv dist/* .
+git add -A .
+git commit -m "Deploy application"
+git push -q upstream HEAD:gh-pages
