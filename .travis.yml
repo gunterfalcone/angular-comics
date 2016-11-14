@@ -13,6 +13,8 @@ cache:
 
 script: grunt karma distribution
 
+after_success: ./generate-site.sh
+
 deploy:
   provider: releases
   skip_cleanup: true
