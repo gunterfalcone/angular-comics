@@ -13,7 +13,9 @@ cache:
 
 script: grunt karma distribution
 
-after_success: ./generate-site.sh
+after_success:
+  - grunt build
+  - ./generate-site.sh
 
 deploy:
   provider: releases

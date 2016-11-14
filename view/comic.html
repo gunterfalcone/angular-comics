@@ -1,0 +1,36 @@
+<div class="row row-content" ng-controller="comicController">
+    <div class="col-xs-12">
+        <h2>{{ comic.title }}
+            <span class="label label-danger">#{{ comic.issueNumber }}</span>
+            <span class="badge" ng-if="comic.prices[0].price > 0">${{ comic.prices[0].price }}</span>
+        </h2>
+        <p class="lead">{{ comic.description }}</p>
+    </div>
+</div>
+<div class="row row-content" ng-controller="comicController">
+    <div class="col-md-offset-3 col-lg-offset-4 col-sm-12 col-md-6 col-lg-4" ng-repeat="image in comic.images">
+        <div class="thumbnail">
+            <img ng-src="{{ image.path }}.{{ image.extension }}">
+        </div>
+    </div>
+</div>
+<div class="row row-content" ng-controller="comicController">
+    <div class="col-sm-4">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Character(s) <span class="badge">{{ comic.characters.available }}</span>
+            <li class="list-group-item" ng-repeat="character in comic.characters.items">{{ character.name }}</li>
+        </ul>
+    </div>
+    <div class="col-sm-4">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Stories(s) <span class="badge">{{ comic.stories.available }}</span>
+            <li class="list-group-item" ng-repeat="story in comic.stories.items">{{ story.name }}</li>
+        </ul>
+    </div>
+    <div class="col-sm-4">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Creator(s) <span class="badge">{{ comic.creators.available }}</span>
+            <li class="list-group-item" ng-repeat="creator in comic.creators.items">{{ creator.role }}: {{ creator.name }}</li>
+        </ul>
+    </div>
+</div>
